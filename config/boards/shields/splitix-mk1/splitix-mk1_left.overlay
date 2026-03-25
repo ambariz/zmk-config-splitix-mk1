@@ -3,12 +3,11 @@
 
 / {
     chosen {
-        zmk,kscan = &default_kscan;
-        zmk,matrix_transform = &default_transform;
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &transform0;
     };
 
-    /* 5x7 matrix */
-    default_kscan: kscan {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
@@ -18,16 +17,16 @@
                     <&gpio0 10 GPIO_PULL_DOWN>,
                     <&gpio0 9 GPIO_PULL_DOWN>;
 
-        col-gpios = <&gpio1 1 GPIO_PULL_UP>,
-                    <&gpio1 2 GPIO_PULL_UP>,
-                    <&gpio1 3 GPIO_PULL_UP>,
-                    <&gpio1 4 GPIO_PULL_UP>,
-                    <&gpio1 5 GPIO_PULL_UP>,
-                    <&gpio1 6 GPIO_PULL_UP>,
-                    <&gpio1 7 GPIO_PULL_UP>;
+        col-gpios = <&gpio0 2 GPIO_PULL_UP>,
+                    <&gpio0 3 GPIO_PULL_UP>,
+                    <&gpio0 4 GPIO_PULL_UP>,
+                    <&gpio0 5 GPIO_PULL_UP>,
+                    <&gpio0 7 GPIO_PULL_UP>,
+                    <&gpio0 11 GPIO_PULL_UP>,
+                    <&gpio1 1 GPIO_PULL_UP>;
     };
 
-    default_transform: matrix_transform {
+    transform0: matrix_transform {
         compatible = "zmk,matrix-transform";
         rows = <5>;
         columns = <7>;
@@ -41,13 +40,10 @@
         >;
     };
 
-    /* Encoder */
     encoder: encoder {
         compatible = "alps,ec11";
-
         a-gpios = <&gpio0 17 GPIO_PULL_UP>;
         b-gpios = <&gpio0 20 GPIO_PULL_UP>;
-
         steps = <80>;
     };
 
@@ -57,46 +53,15 @@
         triggers-per-rotation = <20>;
     };
 
-    /* OLED */
-    pinctrl {
-        i2c0_default: i2c0_default {
-            group1 {
-                psels = <NRF_PSEL(I2C_SDA, 1, 0)>,
-                        <NRF_PSEL(I2C_SCL, 0, 11)>;
-                bias-pull-up;
-            };
-        };
-    };
-
-    &i2c0 {
-        status = "okay";
-        pinctrl-0 = <&i2c0_default>;
-        pinctrl-names = "default";
-        clock-frequency = <400000>;
-
-        ssd1306: ssd1306@3c {
-            compatible = "solomon,ssd1306";
-            reg = <0x3c>;
-            width = <128>;
-            height = <32>;
-            segment-offset = <0>;
-            page-offset = <0>;
-            precharge-period = <0x22>;
-            com-inv = "yes";
-        };
-    };
-
-    /* Per-key RGB */
     perkey_rgb: ws2812_perkey {
         compatible = "ws2812-gpio";
-        gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+        gpios = <&gpio1 7 0>;
         chain-length = <30>;
     };
 
-    /* Underglow */
     underglow_rgb: ws2812_underglow {
         compatible = "ws2812-gpio";
-        gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+        gpios = <&gpio1 1 0>;
         chain-length = <12>;
     };
 };
