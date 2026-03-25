@@ -7,14 +7,14 @@
         zmk,matrix_transform = &default_transform;
     };
 
-    /* 5x9 matrix (matches your right row counts: 8-9-8-8-7) */
+    /* 5x9 matrix */
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        row-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* ROW3 */
-                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* ROW4 */
-        /* If you have more than 2 rows wired on right, add the extra row GPIOs here */
+        row-gpios = <&gpio0 10 GPIO_PULL_DOWN>, /* ROW3 */
+                    <&gpio0 9  GPIO_PULL_DOWN>; /* ROW4 */
+        /* Add remaining row GPIOs if used */
     };
 
     default_transform: matrix_transform {
@@ -31,11 +31,11 @@
         >;
     };
 
-    /* Encoder (same pins as left) */
+    /* Encoder */
     encoder: encoder {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&gpio0 17 GPIO_PULL_UP>;
+        b-gpios = <&gpio0 20 GPIO_PULL_UP>;
         steps = <80>;
     };
 
@@ -45,7 +45,7 @@
         triggers-per-rotation = <20>;
     };
 
-    /* OLED (same as left) */
+    /* OLED */
     pinctrl {
         i2c0_default: i2c0_default {
             group1 {
@@ -74,17 +74,17 @@
         };
     };
 
-    /* Per-key RGB (CHAIN1) */
+    /* Per-key RGB */
     perkey_rgb: ws2812_perkey {
         compatible = "ws2812-gpio";
         gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
-        chain-length = <40>;               /* ← Total keys on right (40) */
+        chain-length = <40>;
     };
 
-    /* Bottom strip (CHAIN2) */
+    /* Bottom strip */
     underglow_rgb: ws2812_underglow {
         compatible = "ws2812-gpio";
         gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
-        chain-length = <12>;               /* ← Change to your actual bottom strip LED count */
+        chain-length = <12>;
     };
 };

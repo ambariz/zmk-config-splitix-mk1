@@ -7,16 +7,16 @@
         zmk,matrix_transform = &default_transform;
     };
 
-    /* 5x7 matrix (matches your left row counts: 7-6-6-6-5) */
+    /* 5x7 matrix */
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        row-gpios = <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* ROW0 */
-                    <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* ROW1 */
-                    <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* ROW2 */
-                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* ROW3 */
-                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* ROW4 */
+        row-gpios = <&gpio0 6 GPIO_PULL_DOWN>,  /* ROW0 */
+                    <&gpio0 8 GPIO_PULL_DOWN>,  /* ROW1 */
+                    <&gpio1 6 GPIO_PULL_DOWN>,  /* ROW2 */
+                    <&gpio0 10 GPIO_PULL_DOWN>, /* ROW3 */
+                    <&gpio0 9 GPIO_PULL_DOWN>;  /* ROW4 */
     };
 
     default_transform: matrix_transform {
@@ -36,8 +36,8 @@
     /* Encoder */
     encoder: encoder {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&gpio0 17 GPIO_PULL_UP>;
+        b-gpios = <&gpio0 20 GPIO_PULL_UP>;
         steps = <80>;
     };
 
@@ -68,7 +68,7 @@
             compatible = "solomon,ssd1306";
             reg = <0x3c>;
             width = <128>;
-            height = <32>;                 /* Change to <64> if your OLED is 128x64 */
+            height = <32>;
             segment-offset = <0>;
             page-offset = <0>;
             precharge-period = <0x22>;
@@ -76,17 +76,17 @@
         };
     };
 
-    /* Per-key RGB (CHAIN1) */
+    /* Per-key RGB */
     perkey_rgb: ws2812_perkey {
         compatible = "ws2812-gpio";
         gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
-        chain-length = <30>;               /* ← Total keys on left (30) */
+        chain-length = <30>;
     };
 
-    /* Bottom strip (CHAIN2) */
+    /* Bottom strip */
     underglow_rgb: ws2812_underglow {
         compatible = "ws2812-gpio";
         gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
-        chain-length = <12>;               /* ← Change to your actual bottom strip LED count */
+        chain-length = <12>;
     };
 };
