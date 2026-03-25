@@ -12,11 +12,19 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        row-gpios = <&gpio0 6 GPIO_PULL_DOWN>,  /* ROW0 */
-                    <&gpio0 8 GPIO_PULL_DOWN>,  /* ROW1 */
-                    <&gpio1 6 GPIO_PULL_DOWN>,  /* ROW2 */
-                    <&gpio0 10 GPIO_PULL_DOWN>, /* ROW3 */
-                    <&gpio0 9 GPIO_PULL_DOWN>;  /* ROW4 */
+        row-gpios = <&gpio0 6 GPIO_PULL_DOWN>,
+                    <&gpio0 8 GPIO_PULL_DOWN>,
+                    <&gpio1 6 GPIO_PULL_DOWN>,
+                    <&gpio0 10 GPIO_PULL_DOWN>,
+                    <&gpio0 9 GPIO_PULL_DOWN>;
+
+        col-gpios = <&gpio1 1 GPIO_PULL_UP>,
+                    <&gpio1 2 GPIO_PULL_UP>,
+                    <&gpio1 3 GPIO_PULL_UP>,
+                    <&gpio1 4 GPIO_PULL_UP>,
+                    <&gpio1 5 GPIO_PULL_UP>,
+                    <&gpio1 6 GPIO_PULL_UP>,
+                    <&gpio1 7 GPIO_PULL_UP>;
     };
 
     default_transform: matrix_transform {
@@ -36,8 +44,10 @@
     /* Encoder */
     encoder: encoder {
         compatible = "alps,ec11";
+
         a-gpios = <&gpio0 17 GPIO_PULL_UP>;
         b-gpios = <&gpio0 20 GPIO_PULL_UP>;
+
         steps = <80>;
     };
 
@@ -83,7 +93,7 @@
         chain-length = <30>;
     };
 
-    /* Bottom strip */
+    /* Underglow */
     underglow_rgb: ws2812_underglow {
         compatible = "ws2812-gpio";
         gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
