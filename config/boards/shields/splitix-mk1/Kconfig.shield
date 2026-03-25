@@ -1,0 +1,7 @@
+config SHIELD_SPLITIX_MK1_LEFT
+    bool "Splitix MK1 Left Half"
+    depends on (BOARD_NICE_NANO_V2 || BOARD_NICE_NANO)
+
+config SHIELD_SPLITIX_MK1_RIGHT
+    bool "Splitix MK1 Right Half"
+    depends on (BOARD_NICE_NANO_V2 || BOARD_NICE_NANO)
