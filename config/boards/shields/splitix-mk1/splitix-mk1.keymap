@@ -8,30 +8,42 @@
         default_layer {
             bindings = <
                 &kp ESC   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp TAB   &kp Q
-                &none     &trans   &kp W    &kp E    &kp R    &kp T    &none    &none     &none
-                &none     &trans   &kp S    &kp D    &kp F    &kp G    &none    &none     &none
-                &none     &trans   &kp X    &kp C    &kp V    &kp B    &none    &none     &none
-                &none     &none    &trans   &kp LALT &kp SPACE &none    &none    &none     &none
+                &none     &trans   &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I
+                &none     &trans   &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K
+                &none     &trans   &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp L
+                &none     &none    &trans   &kp LALT &kp SPACE &kp O    &kp P    &kp LEFT
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         layer_1 {
             bindings = <
                 &kp GRAVE &kp LS(EXCL) &kp LS(AT)   &kp LS(POUND) &kp LS(DLLR) &kp LS(PRCNT) &kp LS(CARET) &kp TAB   &kp LS(Q)
-                &none     &trans       &kp LS(W)    &kp LS(E)     &kp LS(R)    &kp LS(T)    &none    &none     &none
-                &none     &trans       &kp LS(S)    &kp LS(D)     &kp LS(F)    &kp LS(G)    &none    &none     &none
-                &none     &trans       &kp LS(X)    &kp LS(C)     &kp LS(V)    &kp LS(B)    &none    &none     &none
-                &none     &none       &trans       &kp LALT      &kp SPACE    &none        &none    &none     &none
+                &none     &trans       &kp LS(W)    &kp LS(E)     &kp LS(R)    &kp LS(T)    &kp LS(Y)    &kp LS(U)    &kp LS(I)
+                &none     &trans       &kp LS(S)    &kp LS(D)     &kp LS(F)    &kp LS(G)    &kp LS(H)    &kp LS(J)    &kp LS(K)
+                &none     &trans       &kp LS(X)    &kp LS(C)     &kp LS(V)    &kp LS(B)    &kp LS(N)    &kp LS(M)    &kp LS(L)
+                &none     &none       &trans       &kp LALT      &kp SPACE    &kp LS(O)    &kp LS(P)    &kp RIGHT
             >;
         };
 
         layer_2 {
             bindings = <
-                &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &trans   &trans   &trans
-                &none    &trans   &trans   &trans   &trans   &trans   &none    &none    &none
-                &none    &trans   &trans   &trans   &trans   &trans   &none    &none    &none
-                &none    &trans   &trans   &trans   &trans   &trans   &none    &none    &none
-                &none    &none    &trans   &trans   &trans   &none    &none    &none    &none
+                &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &kp F7   &kp F8   &kp F9
+                &none    &trans   &trans   &trans   &trans   &trans   &kp F10  &kp F11  &kp F12
+                &none    &trans   &trans   &trans   &trans   &trans   &kp HOME &kp PG_UP &kp PG_DN
+                &none    &trans   &trans   &trans   &trans   &trans   &kp END  &kp UP   &kp DOWN
+                &none    &none    &trans   &trans   &trans   &trans   &kp LEFT &kp DOWN &kp RIGHT
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+                &kp GRAVE &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8
+                &none     &trans   &trans   &trans   &trans   &trans   &kp N9   &kp N0   &kp MINUS
+                &none     &trans   &trans   &trans   &trans   &trans   &kp EQUAL &kp LBKT &kp RBKT
+                &none     &trans   &trans   &trans   &trans   &trans   &kp BSLH &kp SQT  &kp SEMI
+                &none     &none    &trans   &trans   &trans   &trans   &kp DOT  &kp COMMA &kp FSLH
             >;
         };
     };
