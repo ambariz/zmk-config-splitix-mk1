@@ -6,22 +6,18 @@ config ZMK_SPLIT
 config ZMK_DISPLAY
     default y
 
-config ZMK_RGB_MATRIX
-    default y
+endif
 
-config ZMK_RGB_UNDERGLOW
-    default y
+if SHIELD_SPLITIX_MK1_LEFT
 
-config EC11
-    default y
-
-config EC11_TRIGGER_GLOBAL_THREAD
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y if SHIELD_SPLITIX_MK1_LEFT
+if SHIELD_SPLITIX_MK1_RIGHT
 
 config ZMK_SPLIT_ROLE_PERIPHERAL
-    default y if SHIELD_SPLITIX_MK1_RIGHT
+    default y
+
+endif
