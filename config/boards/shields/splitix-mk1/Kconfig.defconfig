@@ -3,21 +3,11 @@ if SHIELD_SPLITIX_MK1_LEFT || SHIELD_SPLITIX_MK1_RIGHT
 config ZMK_SPLIT
     default y
 
-config ZMK_DISPLAY
-    default y
-
 endif
 
 if SHIELD_SPLITIX_MK1_LEFT
 
 config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
-endif
-
-if SHIELD_SPLITIX_MK1_RIGHT
-
-config ZMK_SPLIT_ROLE_PERIPHERAL
     default y
 
 endif
