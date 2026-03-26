@@ -1,0 +1,13 @@
+/ {
+    compatible = "zmk,keyboard";
+    label = "SPLITIX_MK1";
+
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+    };
+};
